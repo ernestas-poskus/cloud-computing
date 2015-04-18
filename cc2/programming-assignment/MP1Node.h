@@ -14,6 +14,7 @@
 #include "Member.h"
 #include "EmulNet.h"
 #include "Queue.h"
+#include <sstream>
 
 /**
  * Macros
@@ -31,7 +32,7 @@
 enum MsgTypes{
     JOINREQ,
     JOINREP,
-    DUMMYLASTMSGTYPE
+    UPDATEMEMLIST
 };
 
 /**
@@ -55,6 +56,16 @@ private:
 	Params *par;
 	Member *memberNode;
 	char NULLADDR[6];
+
+    void sendJoinRepMsg(Address toAddress);
+    void sendMemberListToGroup();
+    void updateMemberList(char *data);
+
+    // Helper functions
+    void addOrUpdateMember(Address addr, long heartbeat);
+    void increaseSelfHeartbeat();
+    void deleteFailedNodes();
+    void sendMemberListToMember(Address toAddress, MsgTypes msgType);
 
 public:
 	MP1Node(Member *, Params *, EmulNet *, Log *, Address *);
