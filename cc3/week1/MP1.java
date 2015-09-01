@@ -3,8 +3,35 @@ import java.lang.reflect.Array;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class MP1 {
+	private class CountWordTuple implements Comparable<CountWordTuple> {
+		public CountWordTuple(Integer count, String word) {
+	    this.count = count;
+	    this.word = new String(word);
+	}
+
+	public Integer getCount() { return count; }
+	public String getWord() { return word; }
+
+	public int compareTo(CountWordTuple other) {
+	    if (this.getCount().equals(other.getCount())) {
+		return this.getWord().compareTo(other.getWord());
+	    }
+	    else {
+		// Descending on count
+		return other.getCount().compareTo(this.getCount());
+	    }
+	}
+
+	Integer count;
+	String word;
+    };
+
     Random generator;
     String userName;
     String inputFileName;
@@ -51,9 +78,74 @@ public class MP1 {
 
     public String[] process() throws Exception {
         String[] ret = new String[20];
-       
-        //TODO
 
+        //TODO
+        List<String> stopWordsList = Arrays.asList(stopWordsArray);
+        File file = new File(this.inputFileName);
+        BufferedReader reader = null;
+
+        int lines = 0, words = 0, unique = 0, skipped = 0;
+
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            String text = null;
+            Map<String, Integer> wordCount = new HashMap<String, Integer>();
+            List<String> fileLines = new ArrayList<String>();
+            while((text = reader.readLine()) != null) {
+                ++lines;
+                fileLines.add(text);
+            }
+
+            Integer[] indexes = getIndexes();
+            for (int ii=0; ii<indexes.length; ++ii) {
+                text = fileLines.get(indexes[ii]);
+                StringTokenizer st = new StringTokenizer(text, delimiters);
+                while(st.hasMoreTokens()) {
+                    String word = st.nextToken().trim().toLowerCase();
+                    ++words;
+
+                    if (!stopWordsList.contains(word)) {
+                        Integer count = wordCount.get(word);
+                        if (count == null) {
+                            count = new Integer(0);
+                            ++unique;
+                        }
+                        ++count;
+                        wordCount.put(word, count);
+                    }
+                    else {
+                        ++skipped;
+                    }
+                }
+            }
+            List<CountWordTuple> countWordList = new ArrayList<CountWordTuple>();
+            for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
+                String word = entry.getKey();
+                Integer count = entry.getValue();
+                CountWordTuple cwt = new CountWordTuple(count, word);
+                countWordList.add(cwt);
+            }
+
+            Collections.sort(countWordList);
+            Iterator<CountWordTuple> it = countWordList.iterator();
+            int retIdx = 0;
+            while(it.hasNext()) {
+                CountWordTuple cwt = (CountWordTuple) it.next();
+                ret[retIdx] = cwt.getWord();
+                if (++retIdx == 20) {
+                    break;
+                }
+            }
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+
+        }
         return ret;
     }
 
