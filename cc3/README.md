@@ -1,42 +1,59 @@
-# [Cloud Computing Concepts](https://www.coursera.org/course/cloudcomputing "Link to course in Coursera.org")
-### by Indranil Gupta 
+# [Cloud Computing Applications](https://www.coursera.org/course/cloudapplications "Link to course in Coursera.org")
+### by Roy H. Campbell & Reza Farivar, PhD
 
 Learn core distributed computing concepts that underlie today’s and tomorrow’s cloud computing systems.
 
 ### Categories:
- - Computer Science: Theory
  - Information, Tech & Design
+ - Computer Science: Systems & Security
  - Computer Science: Software Engineering
- - Engineering
 
 ### University:
- -  University of Illinois at Urbana-Champaign
- 
-### Workload: 4-8 hours/week:
+ - University of Illinois at Urbana-Champaign
+
+### Workload: 10-15 hours/week:
  - Taught In: English
  - Subtitles Available In: English
 
-### Session: 
- - Feb 2nd 2015 (5 weeks long) **PART 1**
- 
+### Session:
+ - Aug 24 2015 (5 weeks long) **PART 3**
+
 ## About the Course
-Cloud computing systems today, whether open-source or used inside companies, are built using a common set of core techniques, algorithms, and design philosophies—all centered around distributed systems. Learn about such fundamental distributed computing "concepts" for cloud computing.
+Learn about "cloudonomics," the underlying economic reasons that we are creating the cloud. Learn the basic concepts underlying cloud services and be able to use services like AWS or OpenStack Dashboard to construct cloud services or applications. Demonstrate your ability to create web services, massively parallel data intensive computations using Map/Reduce, NoSQL databases, and real-time processing of real-time data streams. Use machine learning tools to solve simple problems.
 
 Some of these concepts include:
- - Clouds, MapReduce, key-value stores
- - Classical precursors
- - Widely-used algorithms
- - Classical algorithms
- - Scalability
- - Trending areas
- - And more!
+ - Baremetal provisioning
+ - Neutron networking
+ - Identity service
+ - Image service
+ - Orchestration
+ - Infrastructure as a service
+ - Software as a service
+ - Platform as a service
+ - MapReduce
+ - Big data
+ - Analytics
+ - Privacy and legal issues
 
-Understand how these techniques work inside today’s most widely-used cloud computing systems. Get your hands dirty using these concepts with provided homework exercises. In the optional programming track, implement some of these concepts in template assignments provided in C++ programming language.
-
+The course will also include example problems and solutions to cloud computing, including hands-on laboratory experiments (Load Balancing and Web Services, MapReduce, Hive, Storm, and Mahout). Case studies will be drawn from Yahoo, Google, Twitter, Facebook, data mining, analytics, and machine learning.
 
 ## Course Syllabus
- - Orientation, Intro to Clouds, MapReduce
- - Gossip, Membership, Grids
- - P2P Systems
- - Key-Value Stores, Time and Ordering
- - Snapshots, Multicast, Paxos
+ - Cloud computing
+ - Distributed services
+ - Cloud services
+ - Web middleware
+ - MapReduce
+ - Hadoop
+ - PIG
+ - HDFS
+ - Tez
+ - Streaming
+ - Advanced storm
+ - Storm internals
+ - CAP theorem & eventual consistency
+ - Hbase
+ - Cassandra
+ - HIVE
+ - Spark
+ - Graph processing
+ - Machine learning
